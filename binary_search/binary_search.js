@@ -1,6 +1,7 @@
 var readline = require('readline');
 var lineNumber = 0;
 var listOfNumbers, keysToSearch;
+var r;
 
 process.stdin.setEncoding('utf8');
 
@@ -34,7 +35,7 @@ BINARY_SEARCH.calculate = function(listOfNumbers, keysToSearch) {
     function bs(nums, low, high, search) {
         var mid;
         if (high < low) {
-            return low - 1;
+            return -1;
         }
         mid = low + Math.floor((high - low) / 2);
         if (search === nums[mid]) {
@@ -45,7 +46,13 @@ BINARY_SEARCH.calculate = function(listOfNumbers, keysToSearch) {
             return bs(nums, mid + 1, high, search);
         }
     }
+    var results = [];
     var numberOfItems = listOfNumbers.slice(0,1);
     var items = listOfNumbers.slice(1,listOfNumbers.length);
-    return bs(items, 0, items.length - 1, 3);
+    for (var i = 1; i < keysToSearch.length; i++) {
+       // var result = bs(items.sort(function(a,b) {return a - b}), 0, items.length - 1, keysToSearch[i]);
+        var result = bs(items, 0, items.length - 1, keysToSearch[i]);
+        results.push(result);
+    }
+    return results.join(" ");
 };
