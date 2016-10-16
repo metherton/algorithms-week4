@@ -9,11 +9,14 @@ public class MajorityElement {
         if (left + 1 == right) {
             return a[left];
         }
-      //  int majorityNumber = (int) Math.floor((a.length / 2));
-        int majorityNumber = (int) Math.floor((right - left / 2));
+        int majorityNumber = (int) Math.floor((a.length / 2));
+        System.out.println("majoriy:" + majorityNumber  +"\n");
+
+      //  int majorityNumber = (int) Math.floor((right - left / 2));
         //write your code here
         int mid = (int)Math.floor(left + ((right - left) / 2));
         int leftSide = getMajorityElement(a, left, mid);
+//        int leftSide = getMajorityElement(a, left, mid);
         int rightSide = getMajorityElement(a, mid + 1, right);
       //  System.out.println("leftSide: " + leftSide + " " + "rightSide: " + rightSide + "\n");
 
@@ -45,7 +48,7 @@ public class MajorityElement {
 
         if (leftSide != -1) {
       //      System.out.println("do test leftSIde:" + leftSide  +"\n");
-            for (int i = 0; i < ; i++) {
+            for (int i = 0; i < a.length; i++) {
 
                 if (a[i] == leftSide) {
                     leftCount++;
@@ -55,7 +58,7 @@ public class MajorityElement {
 
         if (rightSide != -1) {
         //    System.out.println( " and rightside:" + rightSide +"\n");
-            for (int i = 0; i < right; i++) {
+            for (int i = 0; i < a.length; i++) {
 
                 if (a[i] == rightSide) {
                     rightCount++;
