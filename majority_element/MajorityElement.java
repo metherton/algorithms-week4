@@ -4,39 +4,41 @@ import java.io.*;
 public class MajorityElement {
     private static int getMajorityElement(int[] a, int left, int right) {
 
-  //      System.out.println("left:" + left + " right: " + right  +"\n");
+     //   System.out.println("left: " + left + " & right: " + right + "\n");
 
         if (left == right) {
-    //        System.out.println("left  == right" + "\n");
+       //     System.out.println("left  == right" + "\n");
             return -1;
         }
         if (left + 1 == right) {
-      //      System.out.println("left +1 == right" + "\n");
+         //   System.out.println("left +1 == right" + "\n");
             return a[left];
         }
-//        int majorityNumber = (int) Math.floor((a.length / 2));
+ //       int majorityNumber = (int) Math.floor((a.length / 2));
         int majorityNumber = (int) Math.floor(((right - left) / 2));
-        //System.out.println("majority:" + majorityNumber  +"\n");
+     //   System.out.println("majority:" + majorityNumber  +"\n");
 
 
       //  int majorityNumber = (int) Math.floor((right - left / 2));
         //write your code here
-        int mid = (int)Math.floor(left + (((right - 1) - left) / 2));
+        int mid = (int)Math.floor(left + ((right - left) / 2));
 
 //        int mid = (int)Math.floor(left + ((right - left) / 2));
-     //   System.out.println("mid: " + mid);
-     //   System.out.println("getmajority first: left: " + left + " & right: " + mid + "\n");
+  //      System.out.println("mid: " + mid);
+  //      System.out.println("getmajority first: left: " + left + " & right: " + mid + "\n");
         int leftSide = getMajorityElement(a, left, mid);
 //        int leftSide = getMajorityElement(a, left, mid);
-      //  System.out.println("getmajority second: left: " + (mid + 1) + " & right: " + right + "\n");
-        int rightSide = getMajorityElement(a, mid + 1, right);
-     //   System.out.println("leftSide: " + leftSide + " " + "rightSide: " + rightSide + "\n");
+    //    System.out.println("getmajority second: left: " + (mid + 1) + " & right: " + right + "\n");
+        int rightSide = getMajorityElement(a, mid, right);
+    //    System.out.println("leftSide: " + leftSide + " " + "rightSide: " + rightSide + "\n");
 //
 //
 
         int leftCount = 0;
         int rightCount = 0;
 
+
+      //  System.out.println("do the count: left: " + left + " " + " right: " + right + "\n");
 
         if (leftSide == -1 && rightSide != -1) {
 
@@ -99,7 +101,7 @@ public class MajorityElement {
             {
                 return leftSide;
             }
-            else if (leftCount > majorityNumber)
+            else if (rightCount > majorityNumber)
             {
                 return rightSide;
             }
